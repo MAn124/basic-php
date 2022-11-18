@@ -8,7 +8,10 @@
 						$tam = $_GET['page'];
 					} else {
 						$tam = '';
-					}if($tam == 'hotdeals'){
+					}
+					if($tam == '') {
+						include("main/index.php");					
+					}elseif($tam == 'hotdeals'){
 						include("main/hotdeals.php");
 					}elseif($tam == 'categories') {
 						include("main/categories.php");
