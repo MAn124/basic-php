@@ -28,8 +28,7 @@
         <?php 
 			include './modules/header.php';
 			include './modules/sidebar.php';
-			include './modules/menu.php';
-
+			include './modules/main.php';
 		?>
 
             
