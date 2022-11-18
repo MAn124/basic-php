@@ -28,13 +28,22 @@
 </head>
 
 <body>
+    <?php
 
+        include '../config/connect.php';
+        $sql = "SELECT * FROM category ORDER BY category_id DESC";
+        $result_cat_list = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        
+
+    ?>
     <div id="wrapper">     
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
+                <form action="action.php" method="POST">
                     <div class="col-lg-12">
+                    
                         <h1 class="page-header">Category
                             <small>List</small>
                         </h1>
@@ -52,24 +61,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $i = 0;
+                            while ( $row = mysqli_fetch_array($result_cat_list)) {
+                                $i++;
+                            ?>
                             <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Tin Tức</td>
+                                <td><?php echo $row['category_id']  ?></td>
+                                <td><?php echo $row['catname'] ?></td>
                                 <td>None</td>
-                                <td>Hiện</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                <td><?php $row['Cat_status'] ?></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="modules/main/action.php?delete&id=<?php echo $row['category_id'] ?>"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="?admin=cat-edit&id=<?php echo $row['category_id'] ?>">Edit</a></td>
                             </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Bóng Đá</td>
-                                <td>Thể Thao</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
+                            <?php
+                            }
+                            ?>
+                           
                         </tbody>
                     </table>
+                </form>
                 </div>
                 <!-- /.row -->
             </div>

@@ -26,6 +26,7 @@
 </head>
 <body>
         <?php 
+            include '../config/connect.php';
 			include './modules/header.php';
 			include './modules/sidebar.php';
 			include './modules/main.php';
