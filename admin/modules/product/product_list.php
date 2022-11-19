@@ -55,7 +55,7 @@ $result_product_list = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli))
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Price</th>
-                                <th>Date</th>
+                                <th>Quantity</th>
                                 <th>Status</th>
                                 <th>Delete</th>
                                 <th>Edit</th>

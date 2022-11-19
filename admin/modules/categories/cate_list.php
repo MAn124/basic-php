@@ -54,7 +54,6 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Category Parent</th>
                                 <th>Status</th>
                                 <th>Delete</th>
                                 <th>Edit</th>

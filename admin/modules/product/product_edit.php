@@ -34,7 +34,7 @@
     <?php
    
 
-   if(isset($_POST['pro_add'])) {
+   if(isset($_POST['pro_edit'])) {
     $productname = $_POST['txtName'];
     $price = $_POST['txtPrice'];
     $quantity = $_POST['txtQuantity'];
@@ -45,15 +45,27 @@
     $image_name_tmp = $_FILES['fImages']['tmp_name'];
     $status = $_POST['rdoStatus'];
 
-   $id =$_GET['id'];
-   $sql_edit = "UPDATE product 
-   SET product_name = '$productname', product_price = '$price', product_quantity = '$quantity',
-    product_content = '$content', product_iamges = '$image_name',product_keyword = '$productkeyword',
-    product_desc = '$desc', product_status = '$status';
-   WHERE $id";
-   $sql_edit_row = mysqli_query($mysqli, $sql_edit) or die (mysqli_error($mysqli));
-   
-}
+    if($_POST['fImages']) {
+
+        $id =$_GET['id'];
+        $sql_edit = "UPDATE product 
+        SET product_name = '$productname', product_price = '$price', product_quantity = '$quantity',
+         product_content = '$content', product_iamges = '$image_name',product_keyword = '$productkeyword',
+         product_desc = '$desc', product_status = '$status';
+        WHERE $id";
+        $sql_edit_row = mysqli_query($mysqli, $sql_edit) or die (mysqli_error($mysqli));
+        move_uploaded_file($image_name_tmp, '../../upload/' .$image_name);
+
+    } else {
+        $id =$_GET['id'];
+        $sql_edit = "UPDATE product 
+        SET product_name = '$productname', product_price = '$price', product_quantity = '$quantity',
+         product_content = '$content',product_keyword = '$productkeyword',
+         product_desc = '$desc', product_status = '$status';
+        WHERE $id";
+        $sql_edit_row = mysqli_query($mysqli, $sql_edit) or die (mysqli_error($mysqli));
+    }  
+} 
 
       ?>
         <!-- Page Content -->
@@ -68,6 +80,11 @@
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="" method="POST">
+                        
+                                  <select class="form-control">
+                                    <option value="0">Please Choose Category</option>
+                                    <option value="">Tin Tức</option>
+                                </select>
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" name="txtName" placeholder="Please Enter Username" />
@@ -105,7 +122,7 @@
                                     <input name="rdoStatus" value="2" type="radio">Invisible
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-default">Product Edit</button>
+                            <button name="pro_edit" type="submit" class="btn btn-default">Product Edit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

@@ -43,6 +43,23 @@
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="modules/product/action.php" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                           
+                                <select name="cate_id" class="form-control">
+                                    <?php
+                                        $sql = "SELECT * FROM Category ORDER BY category_id DESC";
+                                        $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+                                        $i = 0;
+                                        while($row = mysqli_fetch_array($result)) {
+                                        ?>
+                                            $i++;
+                                            <option value="<?php echo $row['category_id'] ?>"><?php echo $row['catname'] ?></option>;
+                                       <?php
+                                        }
+                                        ?>
+                                    ?>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" name="txtName" placeholder="Please Enter Username" />
