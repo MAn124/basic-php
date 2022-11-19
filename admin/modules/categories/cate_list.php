@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 7.x">
     <meta name="author" content="">
-    <title>Admin - Khoa Phạm</title>
+    <title>Admin </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,16 +28,23 @@
 </head>
 
 <body>
+    <?php
 
-    <div id="wrapper">
+        include '../config/connect.php';
+        $sql = "SELECT * FROM category ORDER BY category_id DESC";
+        $result_cat_list = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+        
 
-    
+    ?>
+    <div id="wrapper">     
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
+                <form action="modules/catergories/action.php" method="POST">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Product
+                    
+                        <h1 class="page-header">Category
                             <small>List</small>
                         </h1>
                     </div>
@@ -47,34 +54,39 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Price</th>
-                                <th>Date</th>
+                                <th>Category Parent</th>
                                 <th>Status</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $i = 0;
+                            while ( $row = mysqli_fetch_array($result_cat_list)) {
+                                $i++;
+                            ?>
                             <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Áo Thun Nana</td>
-                                <td>200.000 VNĐ</td>
-                                <td>3 Minutes Age</td>
-                                <td>Hiện</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                <td><?php echo $row['category_id']  ?></td>
+                                <td><?php echo $row['catname'] ?></td>
+                                <td>None</td>
+                                <td><?php if($row['Cat_status'] == 1){
+                                    echo 'active';
+                                  }  else {
+                                        echo 'hidden';
+                                    }
+                                     ?>
+                                    </td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="modules/categories/action.php?delete&id=<?php echo $row['category_id'] ?>"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="?admin=cat-edit&id=<?php echo $row['category_id'] ?>">Edit</a></td>
                             </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Áo Thun Polo</td>
-                                <td>250.000 VNĐ</td>
-                                <td>1 Hours Age</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
+                            <?php
+                            }
+                            ?>
+                           
                         </tbody>
                     </table>
+                </form>
                 </div>
                 <!-- /.row -->
             </div>
@@ -104,7 +116,7 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
-       
+     
     });
     </script>
 </body>

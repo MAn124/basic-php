@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 7.x">
     <meta name="author" content="">
     <title>Admin</title>
 
@@ -43,7 +42,7 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
+                        <form action="modules/product/action.php" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Name</label>
                                 <input class="form-control" name="txtName" placeholder="Please Enter Username" />
@@ -53,8 +52,8 @@
                                 <input class="form-control" name="txtPrice" placeholder="Please Enter Password" />
                             </div>
                             <div class="form-group">
-                                <label>Intro</label>
-                                <textarea class="form-control" rows="3" name="txtIntro"></textarea>
+                                <label>Quantity</label>
+                                <textarea class="form-control" rows="3" name="txtQuantity"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Content</label>
@@ -70,7 +69,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Product Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea name="desc" class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Product Status</label>
@@ -81,7 +80,7 @@
                                     <input name="rdoStatus" value="2" type="radio">Invisible
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-default">Product Add</button>
+                            <button name="pro_add" type="submit" class="btn btn-default">Product Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

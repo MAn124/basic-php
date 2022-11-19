@@ -6,23 +6,23 @@
             $tam = '';
         }
         if($tam == 'cat-list') {
-            include ("main/cate_list.php");
+            include ("modules/categories/cate_list.php");
         }elseif($tam == 'cat-add') {
-            include ("main/cate_add.php");
+            include ("modules/categories/cate_add.php");
         }elseif($tam == 'cat-edit') {
-            include ("main/cate_edit.php");
+            include ("modules/categories/cate_edit.php");
         }elseif($tam == 'product-list') {
-            include ("main/product_list.php");
+            include ("modules/product/product_list.php");
         }elseif($tam == 'product-add') {
-            include ("main/product_add.php");
+            include ("modules/product/product_add.php");
         }elseif($tam == 'product-edit') {
-            include ("main/product_edit.php");
+            include ("modules/product/product_edit.php");
         }elseif($tam == 'user-list') {
-            include ("main/user_list.php");
+            include ("modules/user/user_list.php");
         }elseif($tam == 'user-add') {
-            include ("main/user_add.php");
+            include ("modules/user/user_add.php");
         }elseif($tam == 'user-edit') {
-            include ("main/user_edit.php");
+            include ("modules/user/user_edit.php");
         }
         
     ?>

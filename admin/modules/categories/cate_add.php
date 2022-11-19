@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 7.x">
     <meta name="author" content="">
     <title>Admin</title>
 
@@ -42,10 +41,10 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="modules/main/action.php" method="POST">
+                        <form action="modules/categories/action.php" method="POST">
                             <div class="form-group">
                                 <label>Category Parent</label>
-                                <select class="form-control">
+                                  <select class="form-control">
                                     <option value="0">Please Choose Category</option>
                                     <option value="">Tin Tức</option>
                                 </select>

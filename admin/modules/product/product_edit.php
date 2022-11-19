@@ -31,7 +31,31 @@
 
     <div id="wrapper">
 
-       
+    <?php
+   
+
+   if(isset($_POST['pro_add'])) {
+    $productname = $_POST['txtName'];
+    $price = $_POST['txtPrice'];
+    $quantity = $_POST['txtQuantity'];
+    $content = $_POST['txtContent'];
+    $productkeyword = $_POST['txtOrder'];
+    $desc = $_POST['desc'];
+    $image_name = $_FILES['fImages']['name'];
+    $image_name_tmp = $_FILES['fImages']['tmp_name'];
+    $status = $_POST['rdoStatus'];
+
+   $id =$_GET['id'];
+   $sql_edit = "UPDATE product 
+   SET product_name = '$productname', product_price = '$price', product_quantity = '$quantity',
+    product_content = '$content', product_iamges = '$image_name',product_keyword = '$productkeyword',
+    product_desc = '$desc', product_status = '$status';
+   WHERE $id";
+   $sql_edit_row = mysqli_query($mysqli, $sql_edit) or die (mysqli_error($mysqli));
+   
+}
+
+      ?>
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -53,8 +77,8 @@
                                 <input class="form-control" name="txtPrice" placeholder="Please Enter Password" />
                             </div>
                             <div class="form-group">
-                                <label>Intro</label>
-                                <textarea class="form-control" rows="3" name="txtIntro"></textarea>
+                                <label>Quantity</label>
+                                <textarea class="form-control" rows="3" name="txtQuantity"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Content</label>

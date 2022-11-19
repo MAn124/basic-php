@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 7.x">
     <meta name="author" content="">
-    <title>Admin </title>
+    <title>Admin - Khoa Phạm</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,23 +28,23 @@
 </head>
 
 <body>
-    <?php
+<?php
 
-        include '../config/connect.php';
-        $sql = "SELECT * FROM category ORDER BY category_id DESC";
-        $result_cat_list = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
-        
+include '../config/connect.php';
+$sql = "SELECT * FROM product ORDER BY product_id DESC";
+$result_product_list = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
 
-    ?>
-    <div id="wrapper">     
+
+?>
+    <div id="wrapper">
+
+    
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                <form action="action.php" method="POST">
                     <div class="col-lg-12">
-                    
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Product
                             <small>List</small>
                         </h1>
                     </div>
@@ -54,7 +54,8 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Category Parent</th>
+                                <th>Price</th>
+                                <th>Date</th>
                                 <th>Status</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
@@ -62,25 +63,30 @@
                         </thead>
                         <tbody>
                             <?php
-                            $i = 0;
-                            while ( $row = mysqli_fetch_array($result_cat_list)) {
+
+                                $i = 0;
+                                while ($row = mysqli_fetch_array($result_product_list)) {
                                 $i++;
                             ?>
                             <tr class="odd gradeX" align="center">
-                                <td><?php echo $row['category_id']  ?></td>
-                                <td><?php echo $row['catname'] ?></td>
-                                <td>None</td>
-                                <td><?php $row['Cat_status'] ?></td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="modules/main/action.php?delete&id=<?php echo $row['category_id'] ?>"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="?admin=cat-edit&id=<?php echo $row['category_id'] ?>">Edit</a></td>
+                                <td><?php echo $row['product_id']?></td>
+                                <td><?php echo $row['product_name']?></td>
+                                <td><?php echo $row['product_price']?></td>
+                                <td><?php echo $row['product_quantity']?></td>
+                                <td><?php if($row['product_status'] == 1){
+                                    echo 'active';
+                                  }  else {
+                                        echo 'hidden';
+                                    }
+                                     ?></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="modules/product/action.php?delete&id=<?php echo $row['product_id'] ?>"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="?admin=product-edit&id=<?php echo $row['product_id'] ?>">Edit</a></td>
                             </tr>
-                            <?php
-                            }
-                            ?>
-                           
+                          <?php
+                                }
+                          ?>
                         </tbody>
                     </table>
-                </form>
                 </div>
                 <!-- /.row -->
             </div>
@@ -110,7 +116,7 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
-     
+       
     });
     </script>
 </body>
