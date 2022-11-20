@@ -38,6 +38,7 @@
 	<body>
 		
 		<?php 
+			include './config/connect.php';
 			include './pages/header.php';
 			include './pages/navigate.php';
 			include './pages/main.php';

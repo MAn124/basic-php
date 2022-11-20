@@ -13,8 +13,8 @@
             if(isset($_POST['pro_add'])) {
                 
 
-                $sql = "INSERT INTO product (product_name,product_price	,product_quantity,product_content,product_images,product_keyword,product_desc,product_status, category_id) 
-                VALUES ('$productname','$price', '$quantity', '$content', '$image_name','$productkeyword', '$desc', '$status', '$cate_id')";
+                $sql = "INSERT INTO product (product_name,product_price	,product_quantity,product_content,product_images,product_desc,product_status, category_id) 
+                VALUES ('$productname','$price', '$quantity', '$content', '$image_name', '$desc', '$status', '$cate_id')";
                 $result = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
                 move_uploaded_file($image_name_tmp, '../../upload/' .$image_name);
                 header("Location:../../index.php?admin=product-list");

@@ -50,8 +50,8 @@
         $id =$_GET['id'];
         $sql_edit = "UPDATE product 
         SET product_name = '$productname', product_price = '$price', product_quantity = '$quantity',
-         product_content = '$content', product_iamges = '$image_name',product_keyword = '$productkeyword',
-         product_desc = '$desc', product_status = '$status';
+         product_content = '$content', product_images = '$image_name',
+         product_desc = '$desc', product_status = '$status'
         WHERE $id";
         $sql_edit_row = mysqli_query($mysqli, $sql_edit) or die (mysqli_error($mysqli));
         move_uploaded_file($image_name_tmp, '../../upload/' .$image_name);
@@ -111,7 +111,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Product Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea name="desc" class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Product Status</label>
