@@ -6,6 +6,8 @@
 				<?php 
 					if(isset($_GET['page'])) {
 						$tam = $_GET['page'];
+					} elseif($tam = 'detail') {
+						include ("detail/product.php");
 					} else {
 						$tam = '';
 					}
@@ -24,7 +26,7 @@
 					}elseif($tam == 'accessories') {
 						include("main/accessories.php");
 					}
-					
+				
 				?>
 			</div>
 
